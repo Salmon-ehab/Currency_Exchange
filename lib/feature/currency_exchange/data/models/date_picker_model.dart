@@ -45,4 +45,13 @@ class DatePickerWidgetModel {
     }
     return false;
   }
+
+ bool get isDifferenceMoreThanYear {
+  if (selectedDate != null && compareDate != null) {
+    Duration difference = selectedDate!.difference(compareDate!);
+    return difference.inDays.abs() > 365; 
+  }
+  return false;
+}
+
 }

@@ -36,6 +36,11 @@ dependencies:
   intl: ^0.20.2
   currency_picker: ^2.0.21
   country_flags: ^3.2.0
+  dio: ^5.8.0+1
+  bloc: ^9.0.0
+  flutter_bloc: ^9.1.0
+  dartz: ^0.10.1
+  equatable: ^2.0.7
 
 
   # The following adds the Cupertino Icons font to your application.

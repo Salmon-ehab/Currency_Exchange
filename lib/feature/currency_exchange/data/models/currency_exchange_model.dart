@@ -6,10 +6,18 @@ class CurrencyExchangeModel {
   final DatePickerWidgetModel endDateModel;
   final bool isFormField;
   final ValueNotifier<int> currentPageNotifier;
+  final ValueNotifier<String> sourceCurr;
+  final ValueNotifier<String> targetCurr;
 
-  CurrencyExchangeModel(
-      {required this.startDateModel,
-      required this.endDateModel,
-      required this.isFormField,
-      required this.currentPageNotifier});
+  CurrencyExchangeModel({
+    required this.startDateModel,
+    required String sourceCurr,
+    required String targetCurr,
+    required this.endDateModel,
+    required this.isFormField,
+    required this.currentPageNotifier,
+  })  : sourceCurr = ValueNotifier<String>(sourceCurr),
+        targetCurr = ValueNotifier<String>(targetCurr);
+
+  
 }

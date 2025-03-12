@@ -2,6 +2,7 @@ import 'package:currency_exchange/feature/currency_exchange/data/view_models/cur
 import 'package:currency_exchange/feature/currency_exchange/data/models/currency_exchange_model.dart';
 import 'package:currency_exchange/feature/currency_exchange/presentation/view/widget/currency_exchange_widgets/currency_exchange_body_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 class CurrecnyExchangeBody extends StatefulWidget {
   const CurrecnyExchangeBody({super.key});
@@ -11,28 +12,38 @@ class CurrecnyExchangeBody extends StatefulWidget {
 }
 
 class _CurrecnyExchangeBodyState extends State<CurrecnyExchangeBody> {
-
-  late CurrencyExchangeState datePickerController;
+  late CurrencyExchangeState exchangeState;
+  late ValueNotifier<int> currentPageNotifier;
 
   @override
   void initState() {
     super.initState();
-    datePickerController = CurrencyExchangeState(
+    exchangeState = CurrencyExchangeState(
       onUpdate: () {
-        setState(() {}); 
+        setState(() {});
       },
     );
+    currentPageNotifier = ValueNotifier<int>(0);
   }
 
   @override
   Widget build(BuildContext context) {
-    ValueNotifier<int> currentPageNotifier = ValueNotifier<int>(0);
-    return CurrencyExchangeBodyWidget(
-      currencyExchangeModel: CurrencyExchangeModel(
-          startDateModel: datePickerController.startDateModel,
-          endDateModel: datePickerController.endDateModel,
-          isFormField: datePickerController.isFormField,
-          currentPageNotifier: currentPageNotifier),
+    return SingleChildScrollView(
+      child: Column(
+        children: [
+          SizedBox(height: 20.h),
+          CurrencyExchangeBodyWidget(
+            currencyExchangeModel: CurrencyExchangeModel(
+              startDateModel: exchangeState.startDateModel,
+              endDateModel: exchangeState.endDateModel,
+              isFormField: exchangeState.isFormField,
+              currentPageNotifier: currentPageNotifier,
+              sourceCurr: exchangeState.sourceCurrency,
+              targetCurr: exchangeState.targetCurrency,
+            ),
+          ),
+        ],
+      ),
     );
   }
 }

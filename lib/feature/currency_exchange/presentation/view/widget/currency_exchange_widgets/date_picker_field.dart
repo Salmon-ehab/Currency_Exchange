@@ -27,7 +27,14 @@ class DatePickerField extends StatelessWidget {
         if (datePickerWidgetModel.isDateInvalid)
           Padding(
             padding: const EdgeInsets.only(top: 5.0),
-            child: Text("⚠️ تاريخ البداية لا يمكن أن يكون بعد تاريخ النهاية",
+            child: Text("⚠️ The start date cannot be after the end date.",
+                style: TextStyle(color: Colors.red, fontSize: 12.sp)),
+          ),
+          if (datePickerWidgetModel.isDifferenceMoreThanYear)
+          Padding(
+            padding: const EdgeInsets.only(top: 5.0),
+            child: Text("⚠️ The Time-Frame you entered is too long,The difference between them must be less than one year. ",
+            textAlign: TextAlign.center,
                 style: TextStyle(color: Colors.red, fontSize: 12.sp)),
           ),
       ],

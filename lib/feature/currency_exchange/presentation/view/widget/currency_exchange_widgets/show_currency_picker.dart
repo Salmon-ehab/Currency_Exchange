@@ -2,38 +2,32 @@ import 'package:currency_exchange/feature/currency_exchange/presentation/view/wi
 import 'package:currency_picker/currency_picker.dart';
 import 'package:flutter/material.dart';
 
-class ShowCurrencyPicker extends StatefulWidget {
-  const ShowCurrencyPicker({super.key, required this.selectedCurrency});
+class ShowCurrencyPicker extends StatelessWidget {
+  const ShowCurrencyPicker({
+    super.key,
+    required this.selectedCurrency,
+    required this.onCurrencySelected,
+  });
+
   final String selectedCurrency;
-  @override
-  State<ShowCurrencyPicker> createState() => _ShowCurrencyPickerState();
-}
+  final ValueChanged<String> onCurrencySelected; 
 
-class _ShowCurrencyPickerState extends State<ShowCurrencyPicker> {
-  late String firstSelectedCurrency;
-  @override
-  void initState() {
-    super.initState();
-    firstSelectedCurrency = widget.selectedCurrency;
-  }
-
-  void showCurrency() {
+  void showCurrency(BuildContext context) {
     showCurrencyPicker(
-        context: context,
-        showFlag: true,
-        showSearchField: true,
-        onSelect: (Currency currency) {
-          setState(() {
-            firstSelectedCurrency = currency.code;
-          });
-        });
+      context: context,
+      showFlag: true,
+      showSearchField: true,
+      onSelect: (Currency currency) {
+        onCurrencySelected(currency.code); 
+      },
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return ShowCurrecnyPickerWidget(
-      selectedCurrency: firstSelectedCurrency,
-      showCurrency: showCurrency,
+      selectedCurrency: selectedCurrency,
+      showCurrency: () => showCurrency(context), 
     );
   }
 }

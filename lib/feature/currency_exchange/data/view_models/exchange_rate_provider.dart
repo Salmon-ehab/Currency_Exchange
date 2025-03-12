@@ -1,9 +1,9 @@
-import 'package:currency_exchange/feature/currency_exchange/data/data_list/exchange_data.dart';
-
 class ExchangeRateProvider {
+  final List<Map<String, dynamic>> exchangeRates;
   final int rowsPerPage;
 
-  ExchangeRateProvider({this.rowsPerPage = 5});
+  ExchangeRateProvider({required this.exchangeRates, this.rowsPerPage = 5});
+
   int get totalRows => exchangeRates.length;
   int get totalPages => (totalRows / rowsPerPage).ceil();
 

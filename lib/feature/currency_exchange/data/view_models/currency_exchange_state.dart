@@ -10,6 +10,8 @@ class CurrencyExchangeState {
   late DatePickerWidgetModel endDateModel;
 
   final VoidCallback onUpdate;
+  String sourceCurrency = "EGP"; 
+  String targetCurrency = "USD"; 
 
   CurrencyExchangeState({required this.onUpdate}) {
     startDateModel = DatePickerWidgetModel(
@@ -45,4 +47,6 @@ class CurrencyExchangeState {
     endDateModel.isEnabled = firstSelectedDate != null;
     onUpdate();
   }
+
+  
 }
