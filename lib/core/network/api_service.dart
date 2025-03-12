@@ -1,6 +1,7 @@
 import 'package:dio/dio.dart';
 
 class ApiService {
+  // دالة لإرجاع البيانات
   final Dio dio;
   ApiService({required this.dio});
   final String _baseUrl = 'https://api.exchangerate.host/timeframe?';
